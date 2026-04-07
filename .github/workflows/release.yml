@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build release binary
+        run: swift build -c release
+
+      - name: Create .app bundle
+        run: |
+          mkdir -p UptimeBar.app/Contents/MacOS
+          cp .build/release/UptimeBar UptimeBar.app/Contents/MacOS/
+          cp Sources/Resources/Info.plist UptimeBar.app/Contents/
+          echo -n "APPL????" > UptimeBar.app/Contents/PkgInfo
+
+      - name: Create zip
+        run: zip -r UptimeBar.zip UptimeBar.app
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: UptimeBar.zip
+          generate_release_notes: true
