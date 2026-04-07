@@ -13,13 +13,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build release binary
-        run: swift build -c release
+      - name: Build universal binary
+        run: |
+          swift build -c release --arch arm64
+          swift build -c release --arch x86_64
+          lipo -create \
+            .build/arm64-apple-macosx/release/UptimeBar \
+            .build/x86_64-apple-macosx/release/UptimeBar \
+            -output UptimeBar-universal
 
       - name: Create .app bundle
         run: |
           mkdir -p UptimeBar.app/Contents/MacOS
-          cp .build/release/UptimeBar UptimeBar.app/Contents/MacOS/
+          cp UptimeBar-universal UptimeBar.app/Contents/MacOS/UptimeBar
           cp Sources/Resources/Info.plist UptimeBar.app/Contents/
           echo -n "APPL????" > UptimeBar.app/Contents/PkgInfo
 
