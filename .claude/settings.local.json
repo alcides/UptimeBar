@@ -37,7 +37,10 @@
       "Bash(cp Sources/Resources/Info.plist /Applications/UptimeBar.app/Contents/)",
       "Bash(curl -sL https://github.com/alcides/UptimeBar/releases/download/v1.1/UptimeBar.zip -o /tmp/UptimeBar-v1.1.zip)",
       "Bash(shasum -a 256 /tmp/UptimeBar-v1.1.zip)",
-      "Bash(sysctl -n machdep.cpu.brand_string)"
+      "Bash(sysctl -n machdep.cpu.brand_string)",
+      "Bash(curl -sL https://github.com/alcides/UptimeBar/releases/download/v1.2/UptimeBar.zip -o /tmp/UptimeBar-v1.2.zip)",
+      "Bash(shasum -a 256 /tmp/UptimeBar-v1.2.zip)",
+      "Bash(git remote:*)"
     ]
   }
 }

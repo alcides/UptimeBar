@@ -18,7 +18,7 @@ struct ServerEntry: Equatable {
 }
 
 final class ConnectivityChecker {
-    private let queue = DispatchQueue(label: "com.uptimebar.checker", attributes: .concurrent)
+    private let queue = DispatchQueue(label: "com.upbar.checker", attributes: .concurrent)
     private let timeout: TimeInterval = 5
 
     func checkInternet(completion: @escaping (Bool) -> Void) {

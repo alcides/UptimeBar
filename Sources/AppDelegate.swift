@@ -13,7 +13,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private var configDirectory: URL {
         FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("UptimeBar")
+            .appendingPathComponent("UpBar")
     }
 
     private var configFileURL: URL {

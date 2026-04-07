@@ -1,4 +1,4 @@
-# UptimeBar
+# UpBar
 
 A minimal macOS menubar app that periodically checks if a list of servers are online.
 
@@ -38,24 +38,24 @@ This project was built with [Claude Code](https://claude.ai/claude-code) from th
 ### Via Homebrew (recommended)
 
 ```bash
-brew tap alcides/uptimebar
-brew install --cask uptimebar
+brew tap alcides/upbar
+brew install --cask upbar
 ```
 
 ### From source
 
 ```bash
 swift build -c release
-mkdir -p UptimeBar.app/Contents/MacOS
-cp .build/release/UptimeBar UptimeBar.app/Contents/MacOS/
-cp Sources/Resources/Info.plist UptimeBar.app/Contents/
-echo -n "APPL????" > UptimeBar.app/Contents/PkgInfo
-cp -R UptimeBar.app /Applications/
+mkdir -p UpBar.app/Contents/MacOS
+cp .build/release/UpBar UpBar.app/Contents/MacOS/
+cp Sources/Resources/Info.plist UpBar.app/Contents/
+echo -n "APPL????" > UpBar.app/Contents/PkgInfo
+cp -R UpBar.app /Applications/
 ```
 
 ## Configuration
 
-The configuration file is located at `~/Library/Application Support/UptimeBar/servers.txt`.
+The configuration file is located at `~/Library/Application Support/UpBar/servers.txt`.
 
 Format: one server per line, `hostname:port` (port defaults to 22 if omitted). Lines starting with `#` are comments.
 

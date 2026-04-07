@@ -2,11 +2,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "UptimeBar",
+    name: "UpBar",
     platforms: [.macOS(.v13)],
     targets: [
         .executableTarget(
-            name: "UptimeBar",
+            name: "UpBar",
             path: "Sources",
             exclude: ["Resources"],
             linkerSettings: [

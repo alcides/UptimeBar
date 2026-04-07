@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleIdentifier</key>
-    <string>com.alcides.UptimeBar</string>
+    <string>com.alcides.UpBar</string>
     <key>CFBundleName</key>
-    <string>UptimeBar</string>
+    <string>UpBar</string>
     <key>CFBundleExecutable</key>
-    <string>UptimeBar</string>
+    <string>UpBar</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleVersion</key>
