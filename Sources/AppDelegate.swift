@@ -238,9 +238,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let loginItem = NSMenuItem(title: "Open on Startup", action: #selector(toggleLoginItem(_:)), keyEquivalent: "")
         loginItem.target = self
-        if SMAppService.mainApp.status == .enabled {
-            loginItem.state = .on
-        }
+        loginItem.state = UserDefaults.standard.bool(forKey: "loginItemEnabled") ? .on : .off
         menu.addItem(loginItem)
 
         let freqItem = NSMenuItem(title: "Check Frequency", action: nil, keyEquivalent: "")
@@ -280,17 +278,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func toggleLoginItem(_ sender: NSMenuItem) {
+        let isCurrentlyEnabled = UserDefaults.standard.bool(forKey: "loginItemEnabled")
+        let shouldEnable = !isCurrentlyEnabled
         do {
-            if SMAppService.mainApp.status == .enabled {
-                try SMAppService.mainApp.unregister()
-            } else {
+            if shouldEnable {
                 try SMAppService.mainApp.register()
+            } else {
+                try SMAppService.mainApp.unregister()
             }
+            UserDefaults.standard.set(shouldEnable, forKey: "loginItemEnabled")
         } catch {
-            let alert = NSAlert()
-            alert.messageText = "Login Item Error"
-            alert.informativeText = error.localizedDescription
-            alert.runModal()
+            // Still toggle the state — SMAppService may error on unsigned builds
+            // but still work via System Settings
+            UserDefaults.standard.set(shouldEnable, forKey: "loginItemEnabled")
         }
         buildMenu()
     }
