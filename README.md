@@ -33,19 +33,23 @@ This project was built with [Claude Code](https://claude.ai/claude-code) from th
 >
 > Ideally, before the menus, you should state the list of machines with their status. Clicking them will copy the hostname/ip address.
 
-## Building
-
-```bash
-swift build -c release
-```
-
 ## Installing
 
+### Via Homebrew (recommended)
+
 ```bash
-# Build and create .app bundle
+brew tap alcides/uptimebar
+brew install --cask uptimebar
+```
+
+### From source
+
+```bash
 swift build -c release
 mkdir -p UptimeBar.app/Contents/MacOS
 cp .build/release/UptimeBar UptimeBar.app/Contents/MacOS/
+cp Sources/Resources/Info.plist UptimeBar.app/Contents/
+echo -n "APPL????" > UptimeBar.app/Contents/PkgInfo
 cp -R UptimeBar.app /Applications/
 ```
 
