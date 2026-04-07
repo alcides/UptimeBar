@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(swift build:*)",
+      "Bash(.build/debug/UptimeBar)",
+      "Bash(echo \"App started, PID: $!\")",
+      "Bash(kill 69980)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(gh auth:*)",
+      "Bash(git rm:*)"
+    ]
+  }
+}
