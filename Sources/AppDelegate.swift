@@ -108,7 +108,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             try? fm.createDirectory(at: configDirectory, withIntermediateDirectories: true)
         }
         if !fm.fileExists(atPath: configFileURL.path) {
-            let defaultContent = "# Add servers to monitor, one per line\n# Format: hostname:port (port defaults to 22)\n# Example:\n# myserver.com:443\n# 192.168.1.1\n"
+            let defaultContent = "# Add servers to monitor, one per line\n# Format: hostname:port (port defaults to 22)\n# Example:\n# myserver.com:443\n# 192.168.1.1\nlocalhost:22\n"
             try? defaultContent.write(to: configFileURL, atomically: true, encoding: .utf8)
         }
     }

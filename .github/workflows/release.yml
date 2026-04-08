@@ -27,6 +27,8 @@ jobs:
           mkdir -p UpBar.app/Contents/MacOS
           cp UpBar-universal UpBar.app/Contents/MacOS/UpBar
           cp Sources/Resources/Info.plist UpBar.app/Contents/
+          mkdir -p UpBar.app/Contents/Resources
+          cp Sources/Resources/AppIcon.icns UpBar.app/Contents/Resources/
           echo -n "APPL????" > UpBar.app/Contents/PkgInfo
 
       - name: Create zip
